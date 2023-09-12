@@ -9,8 +9,25 @@ module.exports = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'home': "url('../public/home-background.png')",
+      }
+    },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui({
+    themes: {
+      dark: {
+        colors: {
+          background: "#040714",
+          primary: {
+            DEFAULT: "#0072F5",
+            foreground: "#000000",
+          },
+          focus: "#0072F5",
+        },
+      },
+    }
+  })],
 }

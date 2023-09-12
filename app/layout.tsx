@@ -6,6 +6,9 @@ import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
+import Image from 'next/image';
+import backgroundImg from '../public/home-background.png';
+import React from 'react'
 
 export const metadata: Metadata = {
 	title: {
@@ -34,25 +37,25 @@ export default function RootLayout({
 			<head />
 			<body
 				className={clsx(
-					"min-h-screen bg-background font-sans antialiased",
+					"min-h-screen font-sans antialiased relative min-h-screen after:bg-home after:bg-center after:bg-cover after:bg-no-repeat after:bg-fixed after:absolute after:inset-0 after:z-[-1]",
 					fontSans.variable
 				)}
 			>
 				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
 					<div className="relative flex flex-col h-screen">
 						<Navbar />
-						<main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+						<main className="container mx-auto max-w-7xl pt-2 px-2 flex-grow">
 							{children}
 						</main>
 						<footer className="w-full flex items-center justify-center py-3">
 							<Link
 								isExternal
 								className="flex items-center gap-1 text-current"
-								href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-								title="nextui.org homepage"
+								href="https://linkedin.com/in/hackgod"
+								title="saurabh suresh linkedin"
 							>
-								<span className="text-default-600">Powered by</span>
-								<p className="text-primary">NextUI</p>
+								<span className="text-default-600">Developed by</span>
+								<p className="text-primary">Saurabh Suresh #HackGod</p>
 							</Link>
 						</footer>
 					</div>
