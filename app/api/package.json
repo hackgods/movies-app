@@ -20,6 +20,8 @@
     "dotenv": "^16.3.1",
     "mongoose": "^7.5.0",
     "nodemon": "^3.0.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "youtube-dl-exec": "^2.4.8",
+    "ytdl-core": "^4.11.5"
   }
 }

@@ -16,10 +16,12 @@ type SliderProps = {
 
 export const Slider: React.FC<SliderProps> = ({ sliderData }) => {
 
-  console.log(sliderData);
+  const handleSliderClick = (link: string) => {
+    window.open(link, '_blank');
+  };
 
   return (
-    <section className="shadow-2xl max-w-screen-2xl">
+    <section className="relative mt-4 shadow-2xl max-w-screen-2xl mb-9">
       <div className="rounded-lg h-96">
         <Carousel
           autoPlay
@@ -30,10 +32,15 @@ export const Slider: React.FC<SliderProps> = ({ sliderData }) => {
           interval={3500}
           dynamicHeight={false}
           transitionTime={300}
+          swipeable={true}
+          emulateTouch={true}
+          className="shadow-2xl rounded-lg hover:border-[4px]
+          border-gray-400 transition-all duration-250 ease-in"
         >
           {sliderData.map((slider) => (
-            <div key={slider.name}>
-              <img className="rounded-lg h-96 object-fill" loading="lazy" src={slider.image} />
+            <div key={slider.name} onClick={() => handleSliderClick(slider.link)} >
+              <img className="rounded-lg h-96 object-cover" loading="lazy" src={slider.image}/>
+              <h1 className="absolute bottom-4 left-10 text-white text-2xl font-semibold">{slider.name}</h1>
             </div>
           ))}
         </Carousel>

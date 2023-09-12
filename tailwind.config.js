@@ -12,11 +12,16 @@ module.exports = {
     extend: {
       backgroundImage: {
         'home': "url('../public/home-background.png')",
+      },
+      fontFamily: {
+        sans: ['Poppins', 'sans'],
       }
     },
   },
   darkMode: "class",
-  plugins: [nextui({
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+    nextui({
     themes: {
       dark: {
         colors: {

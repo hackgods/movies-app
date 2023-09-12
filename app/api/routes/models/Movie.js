@@ -28,7 +28,9 @@ const movieSchema = new mongoose.Schema({
   spokenLanguages: [String],
   status: String,
   voteAverage: Number,
-  voteCount: Number
+  voteCount: Number,
+  ytLink: String,
+  ytID: String
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
