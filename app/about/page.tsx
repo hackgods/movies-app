@@ -1,3 +1,6 @@
+import React from "react";
+
+
 import { subtitle, title } from "@/components/primitives";
 
 export default function AboutPage() {

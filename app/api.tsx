@@ -1,6 +1,6 @@
 export const fetchAppData = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/v1/movies/fetch');
+      const response = await fetch(`${process.env.API}/api/v1/movies/fetch`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -15,7 +15,7 @@ export const fetchAppData = async () => {
   export const fetchMovies = async (id: number|null) => {
     if(id==null){
         try {
-            const response = await fetch('http://localhost:4000/api/v1/movies/movies');
+            const response = await fetch(`${process.env.API}/api/v1/movies/movies`);
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
@@ -27,7 +27,7 @@ export const fetchAppData = async () => {
           }
     } else {
         try {
-            const response = await fetch(`http://localhost:4000/api/v1/movies/movies/${id}`);
+            const response = await fetch(`${process.env.API}/api/v1/movies/movies/${id}`);
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }

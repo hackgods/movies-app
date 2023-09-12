@@ -96,7 +96,7 @@ export const Navbar = () => {
               isBordered
               as="button"
               className="transition-transform"
-              color="blue"
+              color="default"
               name="Profile"
               size="sm"
               src="https://lh3.googleusercontent.com/a/ACg8ocKZvvBa887mHZrWwPPTR_DDwuR20BFgQS2FSQJXL3KVCxA=s576-c-no"

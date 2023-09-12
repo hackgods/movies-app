@@ -30,7 +30,7 @@ function Home() {
 			  setSlidersData(appdata.sliders);
 			}
 	
-			const moviesdata = await fetchMovies();
+			const moviesdata = await fetchMovies(null);
 			setMoviesData(moviesdata); // Set moviesData when fetching is complete
 	
 		  } catch (error) {
