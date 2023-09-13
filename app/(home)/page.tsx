@@ -43,6 +43,10 @@ function Home() {
 	
 	console.log(moviesData);
 
+	console.log("Im testing");
+	const ap = process.env.API
+	console.log(ap);
+	console.log("Im testing");
 	return (
 	  <section className="md:py-4">
 		<main>

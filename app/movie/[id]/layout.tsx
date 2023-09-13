@@ -23,13 +23,14 @@ const MovieLayout: React.FC<MovieLayoutProps> = ({ children }) => {
       <body
 				className={clsx(
 					"font-sans",
-					fontSans.variable
-				)}
+					fontSans.variable,
+					"overflow-hidden" // Prevent body from scrolling
+				  )}
 			>
 				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-					<div className="relative flex flex-col h-screen">
+					<div className="flex flex-col min-h-screen">
 						<Navbar />
-						<main className="">
+						<main className="overflow-y-auto">
 							{children}
 						</main>
 					</div>

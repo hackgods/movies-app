@@ -6,6 +6,12 @@ import { useParams, usePathname } from 'next/navigation';
 import Head from 'next/head';
 import "@/styles/globals.css";
 
+import { FaPlay, FaPlus } from "react-icons/fa6";
+import {Button} from "@nextui-org/react";
+import { Rating } from 'react-simple-star-rating'
+import MovieRating from '@/components/ratingstars';
+
+
 interface MovieData {
   _id: string;
   id: number;
@@ -55,6 +61,10 @@ function Movie() {
       fetchData(); // Call the fetchData function when the component mounts
       }, []); // Empty dependency array to run only on component mount
     
+      const rating10 = moviesData?.voteAverage || 0;
+      const rating5 = rating10 / 2;
+      const roundedRating = Math.round(rating5 * 2) / 2;
+
 
       return (
         <div className="h-screen relative overflow-hidden">
@@ -67,19 +77,30 @@ function Movie() {
             autoPlay
             loop
             muted
-            className="absolute inset-0 w-full h-full object-cover transform scale-150"
+            controls={false}
+            className="absolute inset-0 w-full h-full object-cover transform scale-[1.35]"
           ></video>
           {/* Content over the video */}
           
-          <div className="absolute bottom-20 left-4 right-4 sm:absolute sm:bottom-30 sm:left-10 sm:right-10 z-50">
+          <div className="absolute bottom-0 left-0 right-0 z-50 p-4 mb-20">
   <div className="backdrop-blur-3xl rounded-[30px] p-4 inline-block bg-stone-600  bg-opacity-30">
-    <h1 className="text-4xl font-bold text-white pb-4">
+    <h1 className="sm:text-2xl md:text-3xl lg:text-3xl font-bold text-white pb-4">
       {moviesData ? moviesData.title : ''}
     </h1>
 
-    <h1 className="text-lg font-light text-white">
+
+    <MovieRating rating={moviesData ? roundedRating : 0} /> 
+    
+    <h1 className="sm:text-base md:text-base lg:text-lg font-light text-white pb-4">
       {moviesData ? moviesData.overview : ''}
     </h1>
+
+    <Button className='bg-zinc-50 text-zinc-900 font-bold' startContent={<FaPlay/>}>
+        Watch
+      </Button>
+
+      <Button variant="bordered" className='border-zinc-50 text-zinc-50 font-bold mx-4' startContent={<FaPlus/>}/>
+
   </div>
 </div>
 

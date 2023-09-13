@@ -11,13 +11,10 @@ const youtubedl = require('youtube-dl-exec')
 
 const apiKey = process.env.KEY; // TMDB API key
 
-
-
 //home of movies api
 router.get("/", (req, res) => {
     res.send("Hello -User");
 });
-
 
 
 // Add a new movie
@@ -173,19 +170,20 @@ router.get("/fetch", async (req, res) => {
   });
 
   
-// Define a route to fetch all movies
+// Define a route to fetch all movies with only id and title
 router.get("/movies", async (req, res) => {
-    try {
-      // Use the Movie model to query the database for all movies
-      const movies = await Movie.find();
-  
-      // Send the list of movies as a JSON response
-      res.json(movies);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Internal server error" });
-    }
-  });
+  try {
+    // Use the Movie model to query the database for all movies
+    const movies = await Movie.find({}, { _id: 0, id: 1, title: 1 });
+
+    // Send the list of movies with only id and title as a JSON response
+    res.json(movies);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 
 // Define a route to fetch movie details by ID
 router.get("/movies/:id", async (req, res) => {
@@ -268,6 +266,42 @@ async function getYtVideo(id) {
       reject(error);
     });
   });
+}
+
+// Define a route to update YouTube video links for all movies using ytID
+router.get('/update-yt-links', async (req, res) => {
+  try {
+    // Call a function to update YouTube video links for all movies
+    await updateYouTubeLinksForAllMovies();
+
+    res.status(200).json({ message: 'YouTube video links updated successfully for all movies' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+async function updateYouTubeLinksForAllMovies() {
+  try {
+    // Fetch all movies from the database
+    const movies = await Movie.find();
+
+    for (const movie of movies) {
+      const ytID = movie.ytID;
+
+      // Use the `getYtVideo` function to get the YouTube video link
+      const newYtLink = await getYtVideo(ytID);
+
+      // Update the movie's ytLink property in the database
+      movie.ytLink = newYtLink;
+      await movie.save();
+
+      console.log(`Updated YouTube link for movie: ${movie.title}`);
+    }
+  } catch (error) {
+    console.error('Error updating YouTube video links for movies:', error);
+  }
 }
 
 
