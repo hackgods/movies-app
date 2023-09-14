@@ -2,14 +2,14 @@
 import MovieTile from '@/components/movie-tile'
 import {fetchMovies} from "../../api";
 import React, { useEffect, useState, Context } from 'react';
-import { useParams, usePathname } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import Head from 'next/head';
 import "@/styles/globals.css";
-
 import { FaPlay, FaPlus } from "react-icons/fa6";
 import {Button} from "@nextui-org/react";
 import { Rating } from 'react-simple-star-rating'
 import MovieRating from '@/components/ratingstars';
+import Link from 'next/link'
 
 
 interface MovieData {
@@ -41,7 +41,7 @@ function Movie() {
   const [moviesData, setMoviesData] = useState<MovieData | null>(null);
   const params = useParams();
   const pathname = usePathname();
-
+  const router = useRouter();
 
     useEffect(() => {
       const fetchData = async () => {
@@ -95,9 +95,17 @@ function Movie() {
       {moviesData ? moviesData.overview : ''}
     </h1>
 
-    <Button className='bg-zinc-50 text-zinc-900 font-bold' startContent={<FaPlay/>}>
-        Watch
-      </Button>
+    <Link 
+    href={{
+      pathname : `/watch/${moviesData ? moviesData.id : ''}`,
+      query: { moviesData: JSON.stringify(moviesData) },
+    }}
+    >
+    <Button
+  className='bg-zinc-50 text-zinc-900 font-bold'
+  startContent={<FaPlay />}>
+  Watch
+</Button> </Link>
 
       <Button variant="bordered" className='border-zinc-50 text-zinc-50 font-bold mx-4' startContent={<FaPlus/>}/>
 
