@@ -25,16 +25,16 @@ export const siteConfig = {
 		},
 
     {
-      label: "Movies",
-      href: "/movies",
+      label: "My List",
+      href: "/favourites",
     },
     {
       label: "About",
       href: "/about",
     },
 	{
-			label: "Logout",
-			href: "/logout",
+		label: "Logout",
+		href: "/logout",
 		},
 	],
 	links: {
