@@ -13,7 +13,7 @@ interface MovieCollectionProps {
         <h2 className='text-lg font-semibold'>{title}</h2>
         <div className='flex space-x-6 overflow-y-hidden overflow-x-scroll scrollbar-hide p-2 -m-2'>
         {results.map((result) => (
-            <MovieTile key={result.id} result={result}/>
+            <MovieTile key={result.id} result={result} isFavorite={null}/>
         ))}
         </div>
     </div>

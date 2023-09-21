@@ -11,7 +11,7 @@ export const siteConfig = {
 
     {
       label: "My List",
-      href: "/mylist",
+      href: "/favourites",
     },
     {
       label: "About",

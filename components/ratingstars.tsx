@@ -7,7 +7,7 @@ const MovieRating: React.FC<{ rating: number }> = ({ rating }) => {
   const emptyStars = maxRating - Math.ceil(rating); // Number of empty stars
 
   return (
-    <div className="flex space-x-1 py-2">
+    <div className="flex space-x-1">
       {[...Array(fullStars)].map((_, index) => (
         <svg
           key={index}
