@@ -43,10 +43,7 @@ function Home() {
 	
 	console.log(moviesData);
 
-	console.log("Im testing");
 	const ap = process.env.API
-	console.log(ap);
-	console.log("Im testing");
 	return (
 	  <section className="md:py-4">
 		<main>
@@ -54,9 +51,33 @@ function Home() {
 		  {slidersData && <Slider sliderData={slidersData} />}
 		  
 
-		  <div className='p-1 md:px-1 mb-10'>
+		 	 <div className='p-1 md:px-1 mb-10'>
 				{moviesData.length > 0 && <MovieCollection results={moviesData} title={"Popular Movies"} />}
             </div>
+
+			<div className='p-1 md:px-1 mb-10'>
+				{moviesData.length > 0 && <MovieCollection results={moviesData.filter(movie => movie.genres.includes("Action"))} title={"Action Movies"} />}
+            </div>	
+
+			<div className='p-1 md:px-1 mb-10'>
+				{moviesData.length > 0 && <MovieCollection results={moviesData.filter(movie => movie.genres.includes("Horror"))} title={"Horror Movies"} />}
+            </div>	
+
+			<div className='p-1 md:px-1 mb-10'>
+				{moviesData.length > 0 && <MovieCollection results={moviesData.filter(movie => movie.genres.includes("Romance"))} title={"Romance Movies"} />}
+            </div>
+
+			<div className='p-1 md:px-1 mb-10'>
+				{moviesData.length > 0 && <MovieCollection results={moviesData.filter(movie => movie.genres.includes("Comedy"))} title={"Comedy Movies"} />}
+            </div>	
+
+			<div className='p-1 md:px-1 mb-10'>
+				{moviesData.length > 0 && <MovieCollection results={moviesData.filter(movie => movie.genres.includes("Crime"))} title={"Crime Movies"} />}
+            </div>	
+
+			<div className='p-1 md:px-1 mb-10'>
+				{moviesData.length > 0 && <MovieCollection results={moviesData.filter(movie => movie.genres.includes("Drama"))} title={"Drama Movies"} />}
+            </div>	
 
 
 		</main>

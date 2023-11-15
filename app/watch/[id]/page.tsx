@@ -17,7 +17,7 @@ function Watch() {
 
   return (
     <div>
-       <Video src={jmoviesData.ytLink} title={jmoviesData.title} poster={jmoviesData.posterPath} desc={jmoviesData.overview} cc=""></Video>
+       <Video src={jmoviesData.videoUrl} title={jmoviesData.title} poster={jmoviesData.posterPath} desc={jmoviesData.overview} cc=""></Video>
     </div>
   );
 }

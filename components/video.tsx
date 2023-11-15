@@ -17,14 +17,14 @@ const Video: React.FC<VideoProps> = ({ src, title, poster, desc, cc }) => {
   
   return (
     <div>
-      <MediaPlayer
+
+  <MediaPlayer
   title={title}
   src={src}
   poster={poster}
   aspectRatio={16 / 9}
   crossorigin=""
-  autoplay={true}
->
+  autoplay={true}>
 
   <MediaOutlet>
     <MediaPoster

@@ -43,7 +43,7 @@ export default function RootLayout({
 			</head>
 			<body
 				className={clsx(
-					"min-h-screen font-sans antialiased relative min-h-screen after:bg-home after:bg-center after:bg-cover after:bg-repeat-y after:bg-fixed after:absolute after:inset-0 after:z-[-1]",
+					"font-sans antialiased h-screen after:bg-home after:bg-center after:bg-cover after:bg-fixed after:absolute after:inset-0 after:z-[-1]",
 					fontSans.variable
 				)}
 			>
