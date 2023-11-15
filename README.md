@@ -1,40 +1,39 @@
-# Next.js & NextUI Template
+<h1 align="center" id="title">Movies OTT NextJS App</h1>
 
-This is a template for creating applications using Next.js 13 (app directory) and NextUI (v2).
+<p align="center"><img src="https://socialify.git.ci/hackgods/movies-app/image?description=1&amp;font=Jost&amp;language=1&amp;name=1&amp;owner=1&amp;pattern=Solid&amp;theme=Dark" alt="project-image"></p>
 
-## Technologies Used
+<p id="description">Movies Streaming web app developed in React NextJS + Tailwind with NodeJS backend</p>
 
-- [Next.js 13](https://nextjs.org/docs/getting-started)
-- [NextUI v2](https://nextui.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+<h2>🚀 Demo</h2>
 
-## How to Use
+[https://movies-app-hackgods.vercel.app](https://movies-app-hackgods.vercel.app)
 
+<h2>Project Screenshots:</h2>
 
-### Use the template with create-next-app
+<img src="https://i.ibb.co/zbKthMQ/Screenshot-2023-11-14-at-12-04-00-AM.jpg" alt="project-screenshot" width="1080" height="400/">
 
-To create a new project based on this template using `create-next-app`, run the following command:
+<img src="https://i.ibb.co/NKPjPgM/Screenshot-2023-11-14-at-12-04-19-AM.jpg" alt="project-screenshot" width="1080" height="400/">
 
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
+<img src="https://i.ibb.co/VLxN2J6/Screenshot-2023-11-14-at-12-04-38-AM.jpg" alt="project-screenshot" width="1080" height="400/">
 
-### Install dependencies
+  
+  
+<h2>🧐 Features</h2>
 
-```bash
-npm install
-```
+Here're some of the project's best features:
 
-### Run the development server
+*   NextJS + Tailwind CSS
+*   Beautiful UI/UX
+*   Video Player
+*   CDN assets
 
-```bash
-npm run dev
-```
+  
+  
+<h2>💻 Built with</h2>
 
-## License
+Technologies used in the project:
 
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
+*   NextJS
+*   Tailwind CSS
+*   Vercel
+*   Render
