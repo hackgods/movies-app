@@ -35,12 +35,12 @@ export const Slider: React.FC<SliderProps> = ({ sliderData }) => {
           swipeable={true}
           emulateTouch={true}
           className="shadow-2xl rounded-lg hover:border-[4px]
-          border-gray-400 transition-all duration-250 ease-in"
+          border-gray-400 transition-all duration-250 ease-in animate-fade-up"
         >
           {sliderData.map((slider) => (
             <div key={slider.name} onClick={() => handleSliderClick(slider.link)} >
-              <img className="rounded-lg h-96 object-cover" loading="lazy" src={slider.image}/>
-              <h1 className="absolute bottom-4 left-10 text-white text-2xl font-semibold">{slider.name}</h1>
+              <img className="object-cover rounded-lg h-96" loading="lazy" src={slider.image}/>
+              <h1 className="absolute text-2xl font-semibold text-white bottom-4 left-10">{slider.name}</h1>
             </div>
           ))}
         </Carousel>

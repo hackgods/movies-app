@@ -54,7 +54,6 @@ interface Result {
   return (
     <Spotlight className="group">
   <SpotlightCard>
-      {/* Your existing MovieTile content goes here */}
       <div className="group flex min-w-[200px] min-h-[130px] md:min-w-[200px] 
       md:min-h-[130px] shadow-2xl rounded-lg overflow-hidden cursor-pointer 
       transition duration-300 z-20" 
