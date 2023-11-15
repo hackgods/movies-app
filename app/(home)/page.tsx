@@ -15,10 +15,20 @@ import Spotlight from "@/components/spotlight";
 import { SpotlightCard } from "@/components/spotlight";
 import Image from "next/image";
 
+interface Movie {
+	id: number;
+	title: string;
+	genres: string[];
+	posterPath: string;
+	voteAverage: number;
+	voteCount: number;
+	weightedAverage: number
+  }
+
 function Home() {
 	const [appData, setAppData] = useState(null);
 	const [slidersData, setSlidersData] = useState(null);
-	const [moviesData, setMoviesData] = useState([]);
+	const [moviesData, setMoviesData] = useState<Movie[]>([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
