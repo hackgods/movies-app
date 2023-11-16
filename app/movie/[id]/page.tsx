@@ -130,7 +130,7 @@ const toggleFavorite = () => {
       <Link
         href={{
           pathname: `/watch/${moviesData.id}`,
-          query: { moviesData: JSON.stringify(moviesData) },
+          //query: { moviesData: JSON.stringify(moviesData) },
         }}
       >
         <Button className='font-bold bg-zinc-50 text-zinc-900' startContent={<FaPlay />}>
