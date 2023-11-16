@@ -52,7 +52,7 @@ interface Result {
 
 
   return (
-    <Spotlight className="group">
+    <Spotlight className="group animate-fade-up">
   <SpotlightCard>
       <div className="group flex min-w-[200px] min-h-[130px] md:min-w-[200px] 
       md:min-h-[130px] shadow-2xl rounded-lg overflow-hidden cursor-pointer 
@@ -67,19 +67,19 @@ interface Result {
           alt='movie'
           width={350}
           height={130}
-          className='rounded-lg object-cover'
+          className='object-cover rounded-lg'
         />
 
 
       {isHovered && isFavorited !== null && ( // Check isFavorite !== null to render the button
             <button
-              className="absolute bottom-2 right-2 w-10 h-10 rounded-full bg-opacity-75 bg-white flex items-center justify-center"
+              className="absolute flex items-center justify-center w-10 h-10 bg-white bg-opacity-75 rounded-full bottom-2 right-2"
               onClick={toggleFavorite}
             >
               {isFavorited ? (
-                <FaCheck className="h-6 w-6 text-slate-900 bg-opacity-0" />
+                <FaCheck className="w-6 h-6 bg-opacity-0 text-slate-900" />
               ) : (
-                <FaPlus className="h-6 w-6 text-slate-900 bg-opacity-0" />
+                <FaPlus className="w-6 h-6 bg-opacity-0 text-slate-900" />
               )}
             </button>
           )}
