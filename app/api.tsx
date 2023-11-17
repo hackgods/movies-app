@@ -20,9 +20,9 @@ export const fetchAppData = async () => {
   export const fetchMovies = async (id: number|null) => {
     if(id==null){
         try {
-            const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/movies`, {
-              cache: 'no-cache'
-            });
+            const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/movies`, 
+            {next: { revalidate: 60 } }
+              );
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
@@ -34,9 +34,9 @@ export const fetchAppData = async () => {
           }
     } else {
         try {
-            const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/movies/${id}`, {
-              cache: 'no-cache'
-            });
+            const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/movies/${id}`,
+            { next: { revalidate: 60 } }
+              );
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
@@ -51,9 +51,9 @@ export const fetchAppData = async () => {
   
   export const search = async (term:string) => {
     try {
-      const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/search?q=${term}`, {
-        cache: 'no-cache'
-      });
+      const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/search?q=${term}`, 
+      { next: { revalidate: 60 } }
+      );
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
