@@ -62,14 +62,14 @@ interface Result {
       onMouseLeave={() => setIsHovered(false)}
       >
 
-        
         <Image
           src={`${BASE_URL}${result.posterPath}`}
           alt='movie'
-          placeholder="blur"
+          width={350}
+          height={130}
           className='object-cover rounded-lg'
-          layout="responsive"
         />
+        
 
 
       {isHovered && isFavorited !== null && ( // Check isFavorite !== null to render the button
