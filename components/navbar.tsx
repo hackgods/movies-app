@@ -33,6 +33,9 @@ import { Logo } from "@/components/icons";
 import { search } from "@/app/api";
 import {  Autocomplete,  AutocompleteSection,  AutocompleteItem} from "@nextui-org/autocomplete";
 
+import SearchBar from "./searchbar";
+
+
 interface Movie {
 	_id: string;
 	id: number;
@@ -124,76 +127,12 @@ href={item.href}
 </NavbarContent>
 
 <NavbarContent
-className="hidden bg-white sm:flex basis-1/5 sm:basis-full"
+className="hidden sm:flex basis-1/5 sm:basis-full"
 justify="center"
 >
 
-<NavbarItem className="hidden md:flex">
-<Autocomplete
-	  inputValue={searchValue}
-	  onInputChange={(newValue) => setSearchValue(newValue)}
-      classNames={{
-        base: "max-w-[100rem]",
-        listboxWrapper: "max-h-[320px]",
-        selectorButton: "text-default-500"
-      }}
-      defaultItems={movieSuggestions}
-      inputProps={{
-        classNames: {
-          input: "ml-1",
-          inputWrapper: "h-[48px]",
-        },
-      }}
-      listboxProps={{
-        hideSelectedIcon: true,
-        itemClasses: {
-          base: [
-            "rounded-large",
-            "text-default-500",
-            "transition-opacity",
-            "data-[hover=true]:text-foreground",
-            "dark:data-[hover=true]:bg-default-50",
-            "data-[pressed=true]:opacity-70",
-            "data-[hover=true]:bg-default-200",
-            "data-[selectable=true]:focus:bg-default-100",
-            "data-[focus-visible=true]:ring-default-500",
-          ],
-        },
-      }}
-      aria-label="Search"
-      placeholder="Search"
-      popoverProps={{
-        offset: 15,
-        classNames: {
-          base: "rounded-large",
-          content: "p-1 border-small border-default-100 bg-background",
-        },
-      }}
-      startContent={<SearchIcon className="text-default-400" strokeWidth={2.5} size={20} />}
-      radius="lg"
-	  size="md"
-	  fullWidth={true}
-      
-    >
-      {(item) => (
-        <AutocompleteItem key={item.id} textValue={item.title}>
-			
-		  <NextLink href={{
-          pathname: `/movie/${item.id}`,
-          }}> 
-	  <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-			<Avatar alt={item.title} className="flex-shrink-0" size="md" src={BASE_URL+item.posterPath} />
-              <div className="flex flex-col">
-                <span className="text-small">{item.title}</span>
-                <span className="text-tiny text-default-400">{item.overview}</span>
-              </div>
-            </div>
-          </div>
-	 </NextLink>
-        </AutocompleteItem>
-      )}
-    </Autocomplete>
+<NavbarItem className="flex-auto hidden mx-10 md:flex">
+	<SearchBar searchValue={searchValue} setSearchValue={setSearchValue} movieSuggestions={movieSuggestions} />
 </NavbarItem>
 
 </NavbarContent>
@@ -229,7 +168,9 @@ Log Out
 </Dropdown>
 </NavbarContent>
 <NavbarMenu>
-{searchInput}
+
+<SearchBar searchValue={searchValue} setSearchValue={setSearchValue} movieSuggestions={movieSuggestions} />
+	
 <div className="flex flex-col gap-2 mx-2 mt-2">
 {siteConfig.navMenuItems.map((item, index) => (
 <NavbarMenuItem key={`${item}-${index}`}>
