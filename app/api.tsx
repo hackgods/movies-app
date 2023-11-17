@@ -43,3 +43,16 @@ export const fetchAppData = async () => {
     }
   };  
   
+  export const search = async (term:string) => {
+    try {
+      const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/search?q=${term}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data.results;
+    } catch (error) {
+      console.error('Error searching:', error);
+      throw error;
+    }
+  }; 
