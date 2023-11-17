@@ -34,35 +34,13 @@ import { search } from "@/app/api";
 import {  Autocomplete,  AutocompleteSection,  AutocompleteItem} from "@nextui-org/autocomplete";
 
 import SearchBar from "./searchbar";
+import { MovieModel } from "@/models/movieModel"
 
 
-interface Movie {
-	_id: string;
-	id: number;
-	videoUrl: string;
-	title: string;
-	overview: string;
-	backdropPath: string;
-	genres: string[];
-	homepage: string;
-	popularity: number;
-	posterPath: string;
-	productionCompanies: string[];
-	productionCountries: string[];
-	revenue: number;
-	runtime: number;
-	spokenLanguages: string[];
-	status: string;
-	voteAverage: number;
-	voteCount: number;
-	ytLink: string;
-	ytID: string;
-	__v: number;
-  }
   
 export const Navbar = () => {
 const [searchValue, setSearchValue] = useState('');
-const [movieSuggestions, setMovieSuggestions] = useState<Movie[]>([]);
+const [movieSuggestions, setMovieSuggestions] = useState<MovieModel[]>([]);
 const BASE_URL = "https://image.tmdb.org/t/p/original/";
 // Function to fetch movie suggestions from your server
 // Effect to fetch movie suggestions when searchValue changes

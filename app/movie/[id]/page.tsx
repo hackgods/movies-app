@@ -12,35 +12,14 @@ import { Rating } from 'react-simple-star-rating'
 import MovieRating from '@/components/ratingstars';
 import Link from 'next/link'
 import "@/styles/globals.css";
+import { MovieModel } from "@/models/movieModel"
 
 
-interface MovieData {
-  _id: string;
-  id: number;
-  videoUrl: string;
-  title: string;
-  overview: string;
-  backdropPath: string;
-  genres: string[];
-  homepage: string;
-  popularity: number;
-  posterPath: string;
-  productionCompanies: string[];
-  productionCountries: string[];
-  revenue: number;
-  runtime: number;
-  spokenLanguages: string[];
-  status: string;
-  voteAverage: number;
-  voteCount: number;
-  ytLink: string;
-  ytID: string;
-  __v: number;
-}
+
 
 
 function Movie() {
-  const [moviesData, setMoviesData] = useState<MovieData | null>(null);
+  const [moviesData, setMoviesData] = useState<MovieModel | null>(null);
   const [isFavorite, setIsFavorite] = useState(false); // State variable for favorite
   const params = useParams();
   const pathname = usePathname();

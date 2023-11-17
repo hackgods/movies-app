@@ -4,37 +4,16 @@ import { Autocomplete, AutocompleteItem } from '@nextui-org/autocomplete';
 import { Avatar } from '@nextui-org/react';
 import NextLink from 'next/link';
 import { SearchIcon } from '@/components/icons';
+import { MovieModel } from "@/models/movieModel"
 
-interface Movie {
-	_id: string;
-	id: number;
-	videoUrl: string;
-	title: string;
-	overview: string;
-	backdropPath: string;
-	genres: string[];
-	homepage: string;
-	popularity: number;
-	posterPath: string;
-	productionCompanies: string[];
-	productionCountries: string[];
-	revenue: number;
-	runtime: number;
-	spokenLanguages: string[];
-	status: string;
-	voteAverage: number;
-	voteCount: number;
-	ytLink: string;
-	ytID: string;
-	__v: number;
-  }
+
 
 const BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
 const SearchBar: React.FC<{
   searchValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-  movieSuggestions: Movie[];
+  movieSuggestions: MovieModel[];
 }> = ({ searchValue, setSearchValue, movieSuggestions }) => {
   return (
     <Autocomplete
@@ -82,7 +61,7 @@ const SearchBar: React.FC<{
       size="md"
       fullWidth={true}
     >
-      {(item: Movie) => (
+      {(item: MovieModel) => (
         <AutocompleteItem key={item.id} textValue={item.title}>
           <NextLink
             href={{

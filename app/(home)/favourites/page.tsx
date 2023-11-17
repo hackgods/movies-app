@@ -2,34 +2,13 @@
 import React, { useEffect, useState, Context } from 'react';
 import {fetchMovies} from "../../api";
 import MovieTile from '../../../components/movie-tile'
+import { MovieModel } from "@/models/movieModel"
 
 
-interface MovieData {
-    _id: string;
-    id: number;
-    videoUrl: string;
-    title: string;
-    overview: string;
-    backdropPath: string;
-    genres: string[];
-    homepage: string;
-    popularity: number;
-    posterPath: string;
-    productionCompanies: string[];
-    productionCountries: string[];
-    revenue: number;
-    runtime: number;
-    spokenLanguages: string[];
-    status: string;
-    voteAverage: number;
-    voteCount: number;
-    ytLink: string;
-    ytID: string;
-    __v: number;
-  }
+
 
 function Favorites() {
-    const [favoriteMovies, setFavoriteMovies] = useState<MovieData[]>([]);
+    const [favoriteMovies, setFavoriteMovies] = useState<MovieModel[]>([]);
 
     useEffect(() => {
       const fetchData = async () => {
@@ -60,15 +39,15 @@ function Favorites() {
 
   return (
     <div>
-      <h1 className="sm:text-base md:text-base lg:text-lg font-bold text-white/75 py-4 ">
+      <h1 className="py-4 font-bold sm:text-base md:text-base lg:text-lg text-white/75 ">
       My favourite movies
     </h1>
 
     {favoriteMovies.length === 0 ? (
         <p>No favorite movies found :(</p>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {favoriteMovies.map((movie: MovieData) => (
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
+          {favoriteMovies.map((movie: MovieModel) => (
             <MovieTile key={movie.id} result={movie} isFavorite={localStorage?.getItem('favorites')?.includes(movie.id.toString()) === true} />
           ))}
         </div>
