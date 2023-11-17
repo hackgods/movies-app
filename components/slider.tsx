@@ -39,7 +39,7 @@ export const Slider: React.FC<SliderProps> = ({ sliderData }) => {
         >
           {sliderData.map((slider) => (
             <div key={slider.name} onClick={() => handleSliderClick(slider.link)} >
-              <img className="object-cover rounded-lg h-96" loading="lazy" src={slider.image}/>
+              <img className="object-cover rounded-lg h-96" loading="eager" alt="Slider Image" src={slider.image}/>
               <h1 className="absolute text-2xl font-semibold text-white bottom-4 left-10">{slider.name}</h1>
             </div>
           ))}

@@ -124,7 +124,7 @@ href={item.href}
 </NavbarContent>
 
 <NavbarContent
-className="hidden sm:flex basis-1/5 sm:basis-full"
+className="hidden bg-white sm:flex basis-1/5 sm:basis-full"
 justify="center"
 >
 
