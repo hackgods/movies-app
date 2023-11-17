@@ -62,12 +62,13 @@ interface Result {
       onMouseLeave={() => setIsHovered(false)}
       >
 
+        
         <Image
           src={`${BASE_URL}${result.posterPath}`}
           alt='movie'
-          width={350}
-          height={130}
+          placeholder="blur"
           className='object-cover rounded-lg'
+          layout="responsive"
         />
 
 
