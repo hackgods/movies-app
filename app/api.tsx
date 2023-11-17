@@ -3,9 +3,8 @@ const apiLink = process.env.API;
 
 export const fetchAppData = async () => {
     try {
-      const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/fetch`, {
-        cache: 'no-cache'
-      });
+      const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/fetch`,
+       {next: { revalidate: 60 } });
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
