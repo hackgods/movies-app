@@ -1,52 +1,17 @@
-"use client"
-import NextLink from "next/link";
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
 import { Slider } from "@/components/slider";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import MovieCollection from "@/components/movie-collection";
 import { fetchAppData , fetchMovies} from "../api";
-import Spotlight from "@/components/spotlight";
-import { SpotlightCard } from "@/components/spotlight";
-import Image from "next/image";
 import { MovieModel } from "@/models/movieModel"
 
 
+export default async function Home() {
 
-function Home() {
-	const [appData, setAppData] = useState(null);
-	const [slidersData, setSlidersData] = useState(null);
-	const [moviesData, setMoviesData] = useState<MovieModel[]>([]);
-
-	useEffect(() => {
-		const fetchData = async () => {
-		  try {
-			const appdata = await fetchAppData();
-			setAppData(appdata);
+	const appData = await fetchAppData(); 
+	const slidersData  = appData.sliders
+	const moviesData: MovieModel[] = await fetchMovies(null);	
 	
-			if (appdata && appdata.sliders) {
-			  setSlidersData(appdata.sliders);
-			}
 	
-			const moviesdata = await fetchMovies(null);
-			setMoviesData(moviesdata); // Set moviesData when fetching is complete
-	
-		  } catch (error) {
-			// Handle error if needed
-		  }
-		};
-	
-		fetchData(); // Call the fetchData function when the component mounts
-	  }, []); // Empty dependency array to run only on component mount
-	
-	console.log(moviesData);
-
-	const ap = process.env.API
 	return (
 	  <section className="md:py-4">
 		<main>
@@ -87,5 +52,3 @@ function Home() {
 	  </section>
 	);
 }
-
-export default Home;

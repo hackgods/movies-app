@@ -29,7 +29,7 @@ module.exports = {
         },
       },
       animation: {
-        'fade-up': 'fade-up 0.9s ease-in-out forwards',
+        'fade-up': 'fade-up 0.4s ease-in-out forwards',
       },
     },
   },
