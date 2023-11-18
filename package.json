@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@cliqz/adblocker-webextension": "^1.26.12",
     "@nextui-org/autocomplete": "^2.0.9",
     "@nextui-org/button": "2.0.18",
     "@nextui-org/code": "2.0.16",

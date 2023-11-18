@@ -12,7 +12,6 @@ function Watch() {
   // Get id from param query
   let id = Number(params['id']);
 
-  
   // Initialize id state
   const [iframeDimensions, setIframeDimensions] = useState({ width: 0, height: 0 });
 
@@ -37,38 +36,6 @@ function Watch() {
   }, []);
 
 
-  
-  useEffect(() => {
-    const blockExternalNavigation = (event: BeforeUnloadEvent) => {
-      const beforeUnloadEvent = event as BeforeUnloadEvent;
-      beforeUnloadEvent.preventDefault();
-    };
-  
-    window.addEventListener('beforeunload', blockExternalNavigation);
-  
-    return () => {
-      window.removeEventListener('beforeunload', blockExternalNavigation);
-    };
-  }, []);
-
-  let originalWindowOpen: any;
-
-useEffect(() => {
-  // Store the original window.open method
-  originalWindowOpen = window.open;
-
-  // Override window.open to prevent new windows
-  const blockWindowOpen = () => null;
-  window.open = blockWindowOpen;
-
-  return () => {
-    // Restore the original window.open method on component unmount
-    window.open = originalWindowOpen;
-  };
-}, []);
-
-  
-
   // Dynamically set the iframe source URL
   const iframeSrc = id ? `https://vidsrc.to/embed/movie/${id}` : null;
 
@@ -83,6 +50,9 @@ useEffect(() => {
             allowFullScreen
           ></iframe>
         )}
+
+        
+    
       </a>
     </div>
   );
