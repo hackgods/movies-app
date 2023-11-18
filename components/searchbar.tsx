@@ -5,10 +5,9 @@ import { Avatar } from '@nextui-org/react';
 import NextLink from 'next/link';
 import { SearchIcon } from '@/components/icons';
 import { MovieModel } from "@/models/movieModel"
+import { IMG_BASE_URL } from '@/config/const';
 
 
-
-const BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
 const SearchBar: React.FC<{
   searchValue: string;
@@ -70,7 +69,7 @@ const SearchBar: React.FC<{
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Avatar alt={item.title} className="flex-shrink-0" size="md" src={BASE_URL + item.posterPath} />
+                <Avatar alt={item.title} className="flex-shrink-0" size="md" src={IMG_BASE_URL + item.posterPath} />
                 <div className="flex flex-col">
                   <span className="text-base">{item.title}</span>
                   <span className="text-sm text-default-400">{item.overview}</span>

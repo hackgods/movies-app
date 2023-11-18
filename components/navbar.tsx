@@ -41,7 +41,6 @@ import { MovieModel } from "@/models/movieModel"
 export const Navbar = () => {
 const [searchValue, setSearchValue] = useState('');
 const [movieSuggestions, setMovieSuggestions] = useState<MovieModel[]>([]);
-const BASE_URL = "https://image.tmdb.org/t/p/original/";
 // Function to fetch movie suggestions from your server
 // Effect to fetch movie suggestions when searchValue changes
 useEffect(() => {

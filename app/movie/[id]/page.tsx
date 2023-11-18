@@ -24,7 +24,7 @@ function Movie() {
   const params = useParams();
   const pathname = usePathname();
   const router = useRouter();
-
+  
     
   useEffect(() => {
     const fetchData = async () => {

@@ -6,7 +6,7 @@ import "@/styles/globals.css";
 import Spotlight, { SpotlightCard } from '../components/spotlight'; // Import Spotlight and SpotlightCard
 import { useRouter } from 'next/navigation';
 import { FaPlay, FaPlus, FaCheck} from "react-icons/fa6";
-
+import { IMG_BASE_URL } from '@/config/const';
 
 
 interface Result {
@@ -23,7 +23,6 @@ interface Result {
 
   function MovieTile({ result, isFavorite }: MovieTileProps) {
     
-    const BASE_URL = "https://image.tmdb.org/t/p/original/";
     const [isHovered, setIsHovered] = React.useState(false);
     const [isFavorited, setIsFavorited] = React.useState(isFavorite);
 
@@ -65,7 +64,7 @@ interface Result {
       >
 
         <Image
-          src={`${BASE_URL}${result.posterPath}`}
+          src={`${IMG_BASE_URL}${result.posterPath}`}
           alt='movie'
           width={350}
           height={130}
