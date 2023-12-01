@@ -1,15 +1,23 @@
 "use client"
 import React, { useEffect, useState, Context } from 'react';
-import {fetchMovies} from "../../api";
+import {fetchMovies} from "../../../utils/apiUtils";
 import MovieTile from '../../../components/movie-tile'
 import { MovieModel } from "@/models/movieModel"
 
-
+import { useSession } from "next-auth/react"
+import { redirect } from 'next/navigation';
 
 
 function Favorites() {
     const [favoriteMovies, setFavoriteMovies] = useState<MovieModel[]>([]);
 
+    const { data: session, status } = useSession({
+      required: true,
+      onUnauthenticated() {
+        redirect('/login?callbackUrl=/favourites')
+      }
+    });
+    
     useEffect(() => {
       const fetchData = async () => {
         try {

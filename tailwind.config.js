@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'home': "url('../public/home-background.png')",
+        'login': "url('../public/login-background.jpg')",
       },
       fontFamily: {
         sans: ['Poppins', 'sans'],
@@ -46,6 +47,7 @@ module.exports = {
               foreground: "#000000",
             },
             focus: "#0072F5",
+            secondary: "bg-cyan-500",
           },
         },
       },

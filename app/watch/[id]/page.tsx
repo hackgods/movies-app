@@ -1,6 +1,6 @@
 "use client"
 // Import necessary modules
-import { fetchMovies } from "../../api";
+import { fetchMovies } from "../../../utils/apiUtils";
 import React, { useEffect, useState } from 'react';
 import "@/styles/globals.css";
 import { FaPlay, FaPlus } from "react-icons/fa6";
@@ -8,10 +8,11 @@ import Video from "@/components/video";
 import { useParams } from 'next/navigation';
 
 function Watch() {
+
   const params = useParams();
   // Get id from param query
   let id = Number(params['id']);
-
+  
   // Initialize id state
   const [iframeDimensions, setIframeDimensions] = useState({ width: 0, height: 0 });
 

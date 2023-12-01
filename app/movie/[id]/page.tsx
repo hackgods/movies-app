@@ -1,6 +1,6 @@
 "use client"
 import MovieTile from '@/components/movie-tile'
-import {fetchMovies} from "../../api";
+import {fetchMovies} from "../../../utils/apiUtils";
 import React, { useEffect, useState, Context } from 'react';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import Head from 'next/head';
@@ -13,12 +13,16 @@ import MovieRating from '@/components/ratingstars';
 import Link from 'next/link'
 import "@/styles/globals.css";
 import { MovieModel } from "@/models/movieModel"
+import {useSession } from "next-auth/react";
+import {updateWatchList} from "../../../utils/apiUtils";
+import {handleLogin } from '@/utils/authUtils';
 
 
 
 
 
 function Movie() {
+  const { data: session, status } = useSession();
   const [moviesData, setMoviesData] = useState<MovieModel | null>(null);
   const [isFavorite, setIsFavorite] = useState(false); // State variable for favorite
   const params = useParams();
@@ -69,6 +73,29 @@ const toggleFavorite = () => {
   setIsFavorite(!isFavorite);
 };
 
+const handleWatch = async (movieId:number) => {
+  
+  if(!session) {
+    let watchLog = JSON.parse(localStorage.getItem('moviesWatched') || '0') as number; 
+    
+
+    if(watchLog < 3) {
+      watchLog += 1;
+      console.log(watchLog);
+      localStorage.setItem('moviesWatched', JSON.stringify(watchLog));
+      router.push(`/watch/${movieId}`);
+
+    } else {
+      handleLogin(router);
+    }
+  } else {
+    console.log("SESSION TOKENNN " + session?.user.apiToken);
+    const updateWatch = await updateWatchList(session?.user.apiToken || "", movieId);
+    console.log(updateWatch);
+    router.push(`/watch/${movieId}`);
+  }
+};
+
 
       return (
         <div className="relative h-screen overflow-hidden">
@@ -106,24 +133,19 @@ const toggleFavorite = () => {
         {moviesData.overview}
       </h1>
 
-      <Link
-        href={{
-          pathname: `/watch/${moviesData.id}`,
-          //query: { moviesData: JSON.stringify(moviesData) },
-        }}
-      >
-        <Button className='font-bold bg-zinc-50 text-zinc-900' startContent={<FaPlay />}>
+      
+       <Button className='font-bold bg-zinc-50 text-zinc-900' startContent={<FaPlay />} onClick={() => handleWatch(moviesData.id)}>
           Watch
         </Button>
-      </Link>
 
-      <Button
+      {session ? <Button
         variant="bordered"
         className='mx-4 font-bold border-zinc-50'
         onClick={toggleFavorite}
       >
         {isFavorite ? <FaCheck /> : <FaPlus />}
-      </Button>
+      </Button> : status === "loading" ? null : null}
+      
     </div>
   </div>
 )}

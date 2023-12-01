@@ -30,15 +30,23 @@ SearchIcon,
 } from "@/components/icons";
 
 import { Logo } from "@/components/icons";
-import { search } from "@/app/api";
+import { search } from "@/utils/apiUtils";
 import {  Autocomplete,  AutocompleteSection,  AutocompleteItem} from "@nextui-org/autocomplete";
 
 import SearchBar from "./searchbar";
 import { MovieModel } from "@/models/movieModel"
+import { useSession, signIn, signOut } from "next-auth/react"
+import { handleLogout, handleLogin } from '@/utils/authUtils';
+import { useRouter } from 'next/navigation';
 
 
   
 export const Navbar = () => {
+
+const { data: session, status } = useSession()
+
+const router = useRouter();
+
 const [searchValue, setSearchValue] = useState('');
 const [movieSuggestions, setMovieSuggestions] = useState<MovieModel[]>([]);
 // Function to fetch movie suggestions from your server
@@ -118,6 +126,8 @@ justify="center"
 <NavbarMenuToggle />
 </NavbarContent>
 
+{session ? (
+
 <NavbarContent as="div" className="items-center" justify="end">
 
 <Dropdown placement="bottom-end">
@@ -128,22 +138,33 @@ as="button"
 className="transition-transform"
 color="default"
 name="Profile"
-size="sm"
-src="https://lh3.googleusercontent.com/a/ACg8ocKZvvBa887mHZrWwPPTR_DDwuR20BFgQS2FSQJXL3KVCxA=s576-c-no"
+size="md"
+src={`/avatars/${session.user?.profileEmoji}.png`}
 />
 </DropdownTrigger>
 <DropdownMenu aria-label="Profile Actions" variant="flat">
 <DropdownItem key="profile" className="gap-2 h-14">
 <p className="font-semibold">Signed in as</p>
-<p className="font-semibold">hackgod@gmail.com</p>
+<p className="font-semibold">{session.user?.email}</p>
 </DropdownItem>
 <DropdownItem key="settings">My Settings</DropdownItem>
-<DropdownItem key="logout" color="danger">
+<DropdownItem key="logout" color="danger" onClick={() => handleLogout()}>
 Log Out
 </DropdownItem>
 </DropdownMenu>
 </Dropdown>
 </NavbarContent>
+) : status === "loading" ? null : (
+	<NavbarItem>
+	  <Button className="bg-cyan-600" onClick={() => handleLogin(router)}>
+		Log In
+	  </Button>
+	</NavbarItem>
+  )}
+
+
+
+
 <NavbarMenu>
 
 <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} movieSuggestions={movieSuggestions} />
