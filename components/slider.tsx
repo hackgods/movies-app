@@ -3,6 +3,8 @@
 import "@/styles/globals.css";
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import Image from 'next/image';
+
 
 // Define the type for the movie data object
 type SliderData = {
@@ -30,7 +32,7 @@ export const Slider: React.FC<SliderProps> = ({ sliderData }) => {
           showStatus={false}
           showIndicators={true}
           showThumbs={false}
-          interval={3500}
+          interval={2000}
           dynamicHeight={false}
           transitionTime={300}
           swipeable={true}
@@ -40,7 +42,7 @@ export const Slider: React.FC<SliderProps> = ({ sliderData }) => {
         >
           {sliderData.map((slider) => (
             <div key={slider.name} onClick={() => handleSliderClick(slider.link)} >
-              <img className="object-cover rounded-lg h-96" loading="eager" alt="Slider Image" src={slider.image}/>
+              <Image className="object-cover rounded-lg h-96" loading="eager" alt="Slider Image" src={slider.image} width={1920} height={1080}/>
               <h1 className="absolute text-2xl font-semibold text-white bottom-4 left-10">{slider.name}</h1>
             </div>
           ))}
