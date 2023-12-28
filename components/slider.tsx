@@ -30,7 +30,7 @@ export const Slider: React.FC<SliderProps> = ({ sliderData }) => {
           autoPlay
           infiniteLoop
           showStatus={false}
-          showIndicators={true}
+          showIndicators={false}
           showThumbs={false}
           interval={2000}
           dynamicHeight={false}

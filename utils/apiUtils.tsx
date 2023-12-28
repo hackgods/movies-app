@@ -3,8 +3,9 @@ const apiLink = process.env.API;
 
 export const fetchAppData = async () => {
     try {
-      const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/fetch`,
-       {next: { revalidate: 60 } });
+      console.log("APP DATA FETCH");
+      const response = await fetch(`http://20.117.108.87:7000/api/v1/appdata`,
+       {next: { revalidate: 300 } });
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -19,8 +20,9 @@ export const fetchAppData = async () => {
   export const fetchMovies = async (id: number|null) => {
     if(id==null){
         try {
-            const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/movies`, 
-            {next: { revalidate: 60 } }
+          console.log("MOVIES DATA FETCH");
+            const response = await fetch(`http://20.117.108.87:7000/api/v1/movies`, 
+            {next: { revalidate: 300 } }
               );
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -33,8 +35,9 @@ export const fetchAppData = async () => {
           }
     } else {
         try {
-            const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/movies/${id}`,
-            { next: { revalidate: 60 } }
+          console.log("MOVIES DATA FETCH");
+            const response = await fetch(`http://20.117.108.87:7000/api/v1/movies/${id}`,
+            { next: { revalidate: 300 } }
               );
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -50,6 +53,7 @@ export const fetchAppData = async () => {
   
   export const search = async (term:string) => {
     try {
+      console.log("SEARCH DATA FETCH");
       const response = await fetch(`https://movies-app-server-ypl0.onrender.com/api/v1/movies/search?q=${term}`, 
       { next: { revalidate: 60 } }
       );

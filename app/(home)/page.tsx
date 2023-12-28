@@ -14,9 +14,10 @@ export default async function Home() {
 	const slidersData  = appData.sliders
 	const moviesData: MovieModel[] = await fetchMovies(null);	
 	
-	console.log("TEST SESSION ", session?.user);
+	//console.log("TEST SESSION ", session?.user);
 	
 	return (
+		
 	  <section className="md:py-4">
 		<main>
 		  
@@ -26,12 +27,13 @@ export default async function Home() {
 		 : null
 		 }
   
+
 		  {/* Pass the appData to the Slider component */}
 		  {slidersData && <Slider sliderData={slidersData} />}
 		  
-			  
-
-		 	 <div className='p-1 mb-10 md:px-1'>
+			
+		 
+		 <div className='p-1 mb-10 md:px-1'>
 				{moviesData.length > 0 && <MovieCollection results={moviesData} title={"Popular Movies"} />}
             </div>
 
@@ -62,5 +64,7 @@ export default async function Home() {
 
 		</main>
 	  </section>
+
+
 	);
 }
