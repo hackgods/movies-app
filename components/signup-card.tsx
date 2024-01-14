@@ -38,7 +38,7 @@ function SignUpCard() {
       }
     
   
-      // Call your API function for signing up
+      // Call API function for signing up
       const res = await userSignup(
         userInfo.firstName,
         userInfo.lastName,
@@ -70,7 +70,7 @@ function SignUpCard() {
   
     // Render the component
     return (
-      <div className="flex justify-center m-4">
+      <div className="flex justify-center m-4 transition-all duration-200 ease-in animate-fade-up">
         <Card shadow="sm" className="border-none bg-background">
           <CardBody className="flex flex-row">
             <form onSubmit={handleSubmit} className="p-3 mx-2 space-y-12">
@@ -140,10 +140,10 @@ function SignUpCard() {
                 {[...Array(9)].map((_, index) => (
                   <div
                     key={index}
-                    className={`w-20 h-20 relative cursor-pointer ${
+                    className={`w-20 h-20 relative cursor-pointer bg-cyan-900 transition-transform transform hover:scale-110 ${
                       index === selectedAvatar
-                        ? 'border border-white rounded-xl'
-                        : 'border border-slate-800 rounded-xl'
+                        ? 'border-2 border-white rounded-full'
+                        : 'border border-slate-800 rounded-full'
                     }`}
                     onClick={() => handleAvatarClick(index)}
                   >
@@ -170,11 +170,11 @@ function SignUpCard() {
             </form>
   
             {/* Profile Photo Selection Section for md and lg */}
-            <div className="grid items-center justify-center hidden grid-cols-3 gap-3 p-10 sm:grid">
+            <div className="grid items-center justify-center hidden grid-cols-3 gap-3 p-10 px-1 sm:grid">
               {[...Array(9)].map((_, index) => (
                 <div
                   key={index}
-                  className={`w-20 h-20 m-4 relative cursor-pointer bg-zinc-600 transition-transform transform hover:scale-110 ${
+                  className={`w-20 h-20 m-4 relative cursor-pointer bg-cyan-900 transition-transform transform hover:scale-110 ${
                     index === selectedAvatar
                       ? ' border-white border-2 rounded-full'
                       : 'border border-slate-800 rounded-full'

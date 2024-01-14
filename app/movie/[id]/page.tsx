@@ -114,7 +114,7 @@ const handleWatch = async (movieId:number) => {
           {/* Content over the video */}
           
           {moviesData && (
-  <div className="absolute left-0 right-0 z-50 p-4 mb-20 bottom-10">
+  <div className="absolute left-0 right-0 z-50 p-4 mb-20 transition-all duration-200 ease-in bottom-10 animate-fade-up">
     <div className="backdrop-blur-3xl rounded-[30px] p-4 inline-block bg-stone-600  bg-opacity-30">
       <h1 className="pb-4 font-bold text-white sm:text-2xl md:text-3xl lg:text-3xl">
         {moviesData.title}

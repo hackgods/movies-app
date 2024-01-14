@@ -20,7 +20,7 @@ function Signup() {
 
     // If the user is not logged in, show the SignUpCard
     return (
-        <div className=''>
+        <div className='flex items-center justify-center h-screen'>
             <SignUpCard />
         </div>
     );
