@@ -16,6 +16,8 @@ import { MovieModel } from "@/models/movieModel"
 import {useSession } from "next-auth/react";
 import {updateWatchList} from "../../../utils/apiUtils";
 import {handleLogin } from '@/utils/authUtils';
+import Image from 'next/legacy/image';
+import { IMG_BASE_URL } from '@/config/const';
 
 
 
@@ -28,7 +30,8 @@ function Movie() {
   const params = useParams();
   const pathname = usePathname();
   const router = useRouter();
-  
+  const [videoAvailable, setVideoAvailable] = useState(false); 
+
     
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +39,6 @@ function Movie() {
         const id = Number(params['id']);
         const moviesdata = await fetchMovies(id);
         setMoviesData(moviesdata);
-
         // Check if the movie ID is in localStorage
         const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
         setIsFavorite(favorites.includes(id));
@@ -112,10 +114,23 @@ const handleWatch = async (movieId:number) => {
             className="absolute inset-0 w-full h-full object-cover transform scale-[1.35]"
           ></video>
           {/* Content over the video */}
+
+          {/* <div className="relative w-full h-full">
+  <Image
+    src={`${IMG_BASE_URL}${moviesData?.backdropPath}`}
+    alt="Movie Poster"
+    layout="fill"
+    objectFit="cover"
+    quality={100}
+    loading="eager"
+    priority
+  />
+</div> */}
+          
           
           {moviesData && (
   <div className="absolute left-0 right-0 z-50 p-4 mb-20 transition-all duration-200 ease-in bottom-10 animate-fade-up">
-    <div className="backdrop-blur-3xl rounded-[30px] p-4 inline-block bg-stone-600  bg-opacity-30">
+    <div className="backdrop-blur-3xl rounded-[30px] p-4 inline-block bg-stone-600  bg-opacity-80">
       <h1 className="pb-4 font-bold text-white sm:text-2xl md:text-3xl lg:text-3xl">
         {moviesData.title}
       </h1>
@@ -123,7 +138,7 @@ const handleWatch = async (movieId:number) => {
       <div className="flex gap-4">
         <MovieRating rating={roundedRating} />
         {moviesData.genres.slice(0, 2).map((genre, index) => (
-          <Chip key={index} radius="full" className='bg-stone-600 bg-opacity-30'>
+          <Chip key={index} radius="full" className='text-white bg-zinc-900 bg-opacity-70'>
             {genre}
           </Chip>
         ))}
