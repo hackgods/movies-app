@@ -69,6 +69,7 @@ interface Result {
           width={350}
           height={130}
           className='object-cover rounded-lg'
+          unoptimized
         />
         
 
